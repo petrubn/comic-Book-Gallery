@@ -14,5 +14,10 @@ public class ComicBookController : Controller
     {
         return View();
     }
+
+    public ActionResult Test()
+    {
+        return View("Test");
+    }
         
 }
