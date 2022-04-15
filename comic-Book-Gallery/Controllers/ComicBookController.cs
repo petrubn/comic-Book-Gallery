@@ -1,30 +1,36 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
+using comic_Book_Gallery.Data;
 using comic_Book_Gallery.Models;
+using Microsoft.AspNetCore.Mvc.Formatters;
 
 namespace comic_Book_Gallery.Controllers;
 
 public class ComicBookController : Controller
 {
-    public ActionResult Detail()
+    
+    public ActionResult Index()
     {
-        var comicBook = new ComicBook()
+        var comicBooks = _comicBookrepository.GetComicBooks();
+
+        return View(comicBooks);
+    }
+
+    private ComicBookRepository _comicBookrepository = null;
+
+    public ComicBookController()
+    {
+        _comicBookrepository = new ComicBookRepository();
+    }
+    
+    public ActionResult Detail(int? id)
+    {
+        if (id == null)
         {
-            SeriesTitle = "The Amazing Spider-Man",
-            IssueNumber = 700,
-            DescriptionHtml =
-                "<p>Final issue! Witness the final hours of Doctor Octopus' life and his one, last, great act of revenge! Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>",
-            
-            Artists = new Artist[]
-            {
-                new Artist() { Name = "Dan Slott", Role = "Script" },
-                new Artist() { Name = "Humberto Ramos", Role = "Pencils" },
-                new Artist() { Name = "Victor Olazaba", Role = "Inks" },
-                new Artist() { Name = "Edgar Delgado", Role = "Colors" },
-                new Artist() { Name = "Chris Eliopoulos", Role = "Letters" },
-            }
-        };
+            return new NotFoundResult();
+        }
         
+        var comicBook = _comicBookrepository.GetComicBook((int)id);
         return View(comicBook);
     }
 
@@ -37,5 +43,5 @@ public class ComicBookController : Controller
     {
         return View("Test");
     }
-        
+    
 }
