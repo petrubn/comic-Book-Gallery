@@ -13,9 +13,12 @@
             <h4>@Html.ActionLink(@comicBook.DisplayText, "Detail", 
                     new { id = comicBook.id})</h4>
             
-            <a href="@Url.Action("Detail", new { id = comicBook.id })">img</a>
+            <a href="@Url.Action("Detail", new { id = comicBook.id })"> <img src="/Images/@comicBook.CoverImageFileName" alt="@comicBook.DisplayText" class="img-fluid"/></a>
             
-            <img src="/Images/@comicBook.CoverImageFileName" alt="@comicBook.DisplayText" class="img-fluid"/>
+            
+            
+           
+            
         </div>
     }
     </div>
