@@ -1,16 +1,11 @@
 @model comic_Book_Gallery.Models.ComicBook
 
 @{
-    Layout = "_Layout";
-    /*Model.SeriesTitle = Model.DisplayText;*/
-    Model.SeriesTitle = Model.SeriesTitle;
-    
-    var seriesTitleTest = "Amazing Spider-Man"; /* @ViewBag - eventually */
+    ViewBag.ShowBackbar = true;
 }
 
-@*
+
 <h2>@Model.DisplayText</h2>
-*@
 
 <div class="row">
     <div class="col-md-6 well well-lg">

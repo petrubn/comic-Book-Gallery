@@ -13,10 +13,30 @@
             <h4>@Html.ActionLink(@comicBook.DisplayText, "Detail", 
                     new { id = comicBook.id})</h4>
             
-            <a href="@Url.Action("Detail", new { id = comicBook.id })"> <img src="/Images/@comicBook.CoverImageFileName" alt="@comicBook.DisplayText" class="img-fluid"/></a>
+            <a href="@Url.Action("Detail", new {id = comicBook.id})">
+                 <img src="/Images/@comicBook.CoverImageFileName" alt="@comicBook.DisplayText" class="img-fluid"/>
+            </a>
             
             
+            @*@model Treehouse.Models.VideoGame[]
             
+            @{
+                ViewBag.PageTitle = Model.PageTitle;
+            }
+            
+            <h1>@Model.PageTitle</h1>
+            
+            <div>
+                <ul>
+                    @foreach (var videoGame in Model)
+                    {
+                      <li><a href = "@Url.Action("Detail", new { id = videoGame.id"})>
+                        @videoGame.DisplayText</a>
+                  </li>
+                    }
+                </ul>
+            </div>*@
+
            
             
         </div>
